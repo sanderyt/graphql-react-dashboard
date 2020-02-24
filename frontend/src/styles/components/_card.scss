@@ -1,9 +1,12 @@
 .card {
   display: flex;
-  width: 400px;
-  height: 200px;
+  width: auto;
+  height: auto;
+  padding: 10px 30px;
+  margin: 25px 0;
   background-color: #f7f7f7;
   box-shadow: $box-shadow;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: $border-radius;
