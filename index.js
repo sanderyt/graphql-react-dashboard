@@ -8,7 +8,8 @@ const { MONGODB } = require("./config.js");
 //Apollo server get created here with type defintions and resolvers
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: ({ req }) => ({ req })
 });
 
 //Connecting to MongoDB database
