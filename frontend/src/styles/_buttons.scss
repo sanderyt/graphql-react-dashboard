@@ -1,0 +1,37 @@
+.btn {
+  outline: none;
+  border: none;
+  padding: 10px 30px;
+  background-color: $primary-color;
+  cursor: pointer;
+  color: white;
+  border-radius: $border-radius;
+  font-size: 16px;
+  font-weight: bold;
+  transition: $transition;
+  border-bottom: 4px solid darken($primary-color, 10%);
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+  &--cta {
+    background-color: $cta-color;
+    border-bottom: 4px solid darken($cta-color, 10%);
+    &:hover {
+      background-color: darken($cta-color, 10%);
+    }
+  }
+  &--loading {
+    background-color: #d3d3d3;
+    border-bottom: 4px solid darken(#d3d3de, 10%);
+    &:hover {
+      background-color: #d3d3d3;
+    }
+  }
+  &--logout {
+    background-color: $error-color;
+    border-bottom: 4px solid darken($error-color, 10%);
+    &:hover {
+      background-color: darken($error-color, 10%);
+    }
+  }
+}
