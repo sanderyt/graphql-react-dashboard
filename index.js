@@ -1,9 +1,8 @@
 const { ApolloServer } = require("apollo-server");
-const gql = require("graphql-tag");
 const mongoose = require("mongoose");
 
-const typeDefs = require("./backend/types/typeDefs");
-const resolvers = require("./backend/resolvers/index");
+const typeDefs = require("./backend/schemas");
+const resolvers = require("./backend/resolvers");
 const { MONGODB } = require("./config.js");
 
 //Apollo server get created here with type defintions and resolvers
