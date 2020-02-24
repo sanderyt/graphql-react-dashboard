@@ -1,0 +1,13 @@
+.box {
+  width: 400px;
+  height: auto;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  border-top: 5px solid $primary-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  align-items: center;
+  background-color: white;
+}

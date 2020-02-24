@@ -5,9 +5,14 @@
   align-items: center;
   justify-content: space-around;
   position: fixed;
+  height: 75px;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 2;
   box-shadow: $box-shadow;
+  &__logo {
+    width: 64px;
+    height: 64px;
+  }
 }

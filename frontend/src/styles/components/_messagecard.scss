@@ -1,0 +1,35 @@
+.message-card {
+  width: 350px;
+  height: 70px;
+  transform: translateX(120%);
+  background-color: white;
+  position: fixed;
+  right: 0;
+  opacity: 0;
+  font-size: 14px;
+  margin: 0 20px;
+  top: 125px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  transition: 750ms ease;
+  &__close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    color: #e3e3e3;
+    transition: $transition;
+    &:hover {
+      color: #999999;
+    }
+  }
+  &.actived {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
