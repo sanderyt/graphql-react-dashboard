@@ -16,7 +16,9 @@ const Navbar = () => {
         {user && <h3>Welcome back, {user.username}</h3>}
         {user ? (
           <div>
-            <button className="btn btn--logout">Logout</button>
+            <button className="btn btn--logout" onClick={logout}>
+              Logout
+            </button>
           </div>
         ) : (
           <div>

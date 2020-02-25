@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import { AuthProvider } from "./context/auth";
+import { AuthProvider, AuthContext } from "./context/auth";
 
 import Home from "./pages/Home";
 import Register from "./pages/Register";

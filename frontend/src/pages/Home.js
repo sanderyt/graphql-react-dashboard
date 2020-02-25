@@ -11,16 +11,21 @@ const Home = () => {
     console.log(data.getPosts, "data");
   }
   return (
-    <div>
-      {loading && <h1>Loading</h1>}
-      {data && (
-        <div>
-          <h1>Loaded content</h1>
-          {data.getPosts.map(post => {
-            return <Card card={post} />;
-          })}
-        </div>
-      )}
+    <div className="home">
+      <div className="home__sidebar">
+        <div className="sidebar-item">Add new post</div>
+      </div>
+      <div className="home__content">
+        {loading && <h1>Loading</h1>}
+        {data && (
+          <div>
+            <h1>Loaded content</h1>
+            {data.getPosts.map(post => {
+              return <Card card={post} />;
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
