@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../images/logo192.png";
+import ReactLogo from "../images/logo192.png";
+import GraphQlLogo from "../images/graphql.png";
 
 import { AuthContext } from "../context/auth";
 
@@ -9,9 +10,10 @@ const Navbar = () => {
   return (
     <header>
       <div className="navbar">
-        <img src={Logo} className="navbar__logo" alt="logo" />
+        <img src={ReactLogo} className="navbar__logo" alt="react-logo" />
+        <img src={GraphQlLogo} className="navbar__logo" alt="logo" />
         <Link to="/">
-          <h2>React app</h2>
+          <h2>React/GraphQL App</h2>
         </Link>
         {user && <h3>Welcome back, {user.username}</h3>}
         {user ? (
