@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { AuthProvider, AuthContext } from "./context/auth";
 
@@ -9,12 +9,13 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <AuthProvider>
       <Router>
         <Navbar />
         <div className="content">
-          <Route exact path="/" component={Home} />
+          <Route path="/admin" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
         </div>

@@ -10,28 +10,31 @@ const Navbar = () => {
   return (
     <header>
       <div className="navbar">
-        <img src={ReactLogo} className="navbar__logo" alt="react-logo" />
-        <img src={GraphQlLogo} className="navbar__logo" alt="logo" />
-        <Link to="/">
-          <h2>React/GraphQL App</h2>
-        </Link>
-        {user && <h3>Welcome back, {user.username}</h3>}
-        {user ? (
-          <div>
-            <button className="btn btn--logout" onClick={logout}>
-              Logout
-            </button>
-          </div>
-        ) : (
-          <div>
-            <Link to="/login">
-              <button className="btn">Login</button>
-            </Link>
-            <Link to="/register">
-              <button className="btn btn--cta">Register</button>
-            </Link>
-          </div>
-        )}
+        <div className="navbar__logo">
+          <img src={ReactLogo} alt="react-logo" className="logo" />
+          <img src={GraphQlLogo} alt="logo" className="logo" />
+          <Link to="/admin">
+            <h2>React/GraphQL App</h2>
+          </Link>
+        </div>
+        <div className="navbar__actions">
+          {user ? (
+            <div>
+              <button className="btn btn--logout" onClick={logout}>
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div>
+              <Link to="/login">
+                <button className="btn">Login</button>
+              </Link>
+              <Link to="/register">
+                <button className="btn btn--cta">Register</button>
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

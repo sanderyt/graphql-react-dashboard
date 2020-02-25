@@ -1,9 +1,7 @@
 .navbar {
   background-color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
-  justify-content: space-around;
   position: fixed;
   height: 75px;
   top: 0;
@@ -12,7 +10,19 @@
   z-index: 2;
   box-shadow: $box-shadow;
   &__logo {
-    width: 64px;
-    height: 64px;
+    flex: 1;
+    display: flex;
+    margin-left: 88px;
   }
+  &__actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 88px;
+  }
+}
+
+.logo {
+  height: 64px;
+  width: 64px;
 }

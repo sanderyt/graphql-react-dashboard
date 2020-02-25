@@ -18,10 +18,10 @@ const Login = props => {
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     update(_, result) {
       context.login(result.data.login);
-      props.history.push("/");
+      props.history.push("/admin");
     },
     onError({ graphQLErrors }) {
-      console.log(graphQLErrors[0].extensions.exception.errors);
+      console.log(graphQLErrors);
     },
     variables: input
   });
@@ -33,6 +33,10 @@ const Login = props => {
   return (
     <div>
       <h1>Login</h1>
+      <p>
+        This dashboard was made by
+        <a href="http://www.linkedin.com"> Sander van Rijsoort </a>
+      </p>
       <Box>
         <input
           type="text"
