@@ -3,9 +3,11 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import Box from "../components/Box";
+import { AuthContext } from "../context/auth";
 
 const Login = props => {
-  const [input, setInput] = useState({});
+  const context = useContext(AuthContext);
+  const [input, setInput] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({});
 
   const inputHandler = event => {
@@ -15,18 +17,16 @@ const Login = props => {
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     update(_, result) {
+      context.login(result.data.login);
       props.history.push("/");
-      console.log(result);
     },
-    onError(err) {
-      console.log(err.errors, "errors");
-      // setErrors(err.graphQLErrors[0].extensions.exception.errors);
+    onError({ graphQLErrors }) {
+      console.log(graphQLErrors[0].extensions.exception.errors);
     },
     variables: input
   });
 
-  const submitHandler = event => {
-    event.preventDefault();
+  const submitHandler = () => {
     loginUser();
   };
 

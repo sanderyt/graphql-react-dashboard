@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 
 import Box from "../components/Box";
 import Spinner from "../components/Spinner";
 import MessageCard from "../components/MessageCard";
+import { AuthContext } from "../context/auth";
 
 const Register = props => {
+  const context = useContext(AuthContext);
   const [input, setInput] = useState({
     username: "",
     email: "",
@@ -22,6 +24,7 @@ const Register = props => {
 
   const [registerUser, { loading }] = useMutation(REGISTER_USER, {
     update(_, result) {
+      context.login(result.data.register);
       props.history.push("/");
     },
     onError({ graphQLErrors }) {
