@@ -20,7 +20,7 @@ const Home = () => {
           <div className="sidebar-item">Add new post</div>
         </Link>
         <Link to="/admin/elements">
-          <div className="sidebar-item">UI Elements</div>
+          <div className="sidebar-item">Component library</div>
         </Link>
       </div>
       <div className="home__content">
@@ -36,14 +36,3 @@ const Home = () => {
 };
 
 export default Home;
-{
-  /* {loading && <h1>Loading</h1>}
-        {data && (
-          <div>
-            <h1>Loaded content</h1>
-            {data.getPosts.map(post => {
-              return <Card card={post} />;
-            })}
-          </div>
-        )} */
-}

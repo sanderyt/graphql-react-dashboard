@@ -14,7 +14,7 @@ const Navbar = () => {
           <img src={ReactLogo} alt="react-logo" className="logo" />
           <img src={GraphQlLogo} alt="logo" className="logo" />
           <Link to="/admin">
-            <h2>React/GraphQL App</h2>
+            <h2>React/GraphQL App // Component Library</h2>
           </Link>
         </div>
         <div className="navbar__actions">
