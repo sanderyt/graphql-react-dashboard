@@ -6,8 +6,13 @@ import Box from "../components/Box";
 import Spinner from "../components/Spinner";
 import MessageCard from "../components/MessageCard";
 
-const Register = () => {
-  const [input, setInput] = useState({});
+const Register = props => {
+  const [input, setInput] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
   const [errors, setErrors] = useState({});
 
   const inputHandler = event => {
@@ -16,17 +21,16 @@ const Register = () => {
   };
 
   const [registerUser, { loading }] = useMutation(REGISTER_USER, {
-    update(proxy, result) {
-      console.log(result);
+    update(_, result) {
+      props.history.push("/");
     },
-    onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+    onError({ graphQLErrors }) {
+      setErrors(graphQLErrors[0].extensions.exception.errors);
     },
     variables: input
   });
 
   const submitHandler = event => {
-    event.preventDefault();
     registerUser();
   };
 
@@ -37,28 +41,24 @@ const Register = () => {
         <h2>Sign up today for free</h2>
         <input
           type="text"
-          id="email"
           name="email"
           placeholder="Email"
           onChange={inputHandler}
         />
         <input
           type="text"
-          id="username"
           name="username"
           placeholder="Username"
           onChange={inputHandler}
         />
         <input
           type="password"
-          id="password"
           name="password"
           placeholder="Password"
           onChange={inputHandler}
         />
         <input
           type="password"
-          id="confirmPassword"
           name="confirmPassword"
           placeholder="Confirm password"
           onChange={inputHandler}
@@ -70,6 +70,11 @@ const Register = () => {
           {loading && <Spinner />}
           Register
         </button>
+        <ul>
+          {Object.values(errors).map(value => {
+            return <li key={value}>{value}</li>;
+          })}
+        </ul>
       </Box>
     </div>
   );

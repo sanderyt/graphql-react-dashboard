@@ -10,16 +10,14 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Navbar />
-        <div className="content">
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-        </div>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <Navbar />
+      <div className="content">
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+      </div>
+    </Router>
   );
 }
 
