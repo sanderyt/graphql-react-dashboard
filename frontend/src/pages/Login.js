@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Box from "../components/Box";
+
+import { AuthContext } from "../context/auth";
 
 const Login = () => {
   const [input, setInput] = useState({});
@@ -12,6 +14,7 @@ const Login = () => {
   const submitHandler = () => {
     console.log(input, "input");
   };
+
   return (
     <div>
       <h1>Login</h1>
