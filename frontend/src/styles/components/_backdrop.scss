@@ -6,9 +6,9 @@
   justify-content: center;
   align-items: center;
   top: 0;
+  opacity: 0;
   left: 0;
   z-index: 300;
   display: flex;
-  transition: $transition;
-  animation: fade 1000ms linear;
+  animation: fade 500ms forwards;
 }

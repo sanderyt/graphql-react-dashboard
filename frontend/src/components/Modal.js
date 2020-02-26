@@ -8,7 +8,7 @@ const Modal = ({ children, title, onClose, open, footer }) => {
   return (
     <div>
       {open && (
-        <Backdrop onClose={onClose}>
+        <Backdrop onClose={onClose} open={open}>
           <div className="modal">
             <div className="modal__header">
               <h2>{title}</h2>
