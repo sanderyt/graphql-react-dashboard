@@ -16,6 +16,7 @@ const AddPost = () => {
     variables: values,
     update(_, result) {
       setAddedPost(true);
+      console.log("Jo");
     },
     onError({ graphQLErrors }) {
       console.log(graphQLErrors);
