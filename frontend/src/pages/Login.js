@@ -4,16 +4,15 @@ import gql from "graphql-tag";
 
 import Box from "../components/Box";
 import { AuthContext } from "../context/auth";
+import { useForm } from "../util/hooks";
 
 const Login = props => {
   const context = useContext(AuthContext);
-  const [input, setInput] = useState({ username: "", password: "" });
+  const { onChange, onSubmit, values } = useForm(loginUserCallback, {
+    username: "",
+    password: ""
+  });
   const [errors, setErrors] = useState({});
-
-  const inputHandler = event => {
-    const value = event.target.value;
-    setInput({ ...input, [event.target.name]: value });
-  };
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     update(_, result) {
@@ -23,12 +22,12 @@ const Login = props => {
     onError({ graphQLErrors }) {
       console.log(graphQLErrors);
     },
-    variables: input
+    variables: values
   });
 
-  const submitHandler = () => {
+  function loginUserCallback() {
     loginUser();
-  };
+  }
 
   return (
     <div>
@@ -43,16 +42,16 @@ const Login = props => {
           id="username"
           name="username"
           placeholder="Username"
-          onChange={inputHandler}
+          onChange={onChange}
         />
         <input
           type="password"
           id="password"
           name="password"
           placeholder="Password"
-          onChange={inputHandler}
+          onChange={onChange}
         />
-        <button className="btn" onClick={submitHandler}>
+        <button className="btn" onClick={onSubmit}>
           Login
         </button>
       </Box>
