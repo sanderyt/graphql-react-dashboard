@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Box from "../components/Box";
 import Modal from "../components/Modal";
-import Backdrop from "../components/Backdrop";
 import MessageCard from "../components/MessageCard";
+import Spinner from "../components/Spinner";
 
 const Elements = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -88,6 +88,8 @@ const Elements = () => {
         Success
       </button>
       <button className="btn btn--logout">Failure</button>
+      <h2>Loading spinners</h2>
+      <Spinner />
     </div>
   );
 };

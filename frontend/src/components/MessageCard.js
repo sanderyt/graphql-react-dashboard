@@ -9,7 +9,10 @@ const MessageCard = ({ children, onOpen, onClose, onSuccess, callback }) => {
   }, [onOpen]);
 
   return (
-    <div className={onOpen ? "message-card actived" : "message-card"}>
+    <div
+      className={onOpen ? "message-card actived" : "message-card"}
+      style={onSuccess ? { borderTop: "5px solid #00b894" } : null}
+    >
       <div className="message-card__close" onClick={onClose}>
         <FontAwesomeIcon icon={faTimes} />
       </div>

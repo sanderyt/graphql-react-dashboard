@@ -2,12 +2,41 @@
   display: flex;
   width: auto;
   height: auto;
-  padding: 10px 30px;
   margin: 25px 0;
-  background-color: #f7f7f7;
+  background-color: white;
+  border-top: 5px solid $primary-color;
   box-shadow: $box-shadow;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-radius: $border-radius;
+  animation: fade 500ms forwards;
+  &__actions {
+    display: flex;
+    background-color: #ededed;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+    &__item {
+      background-color: #f7f7f7;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid rgba(0, 0, 0, 0.07);
+      display: flex;
+      cursor: pointer;
+      height: 40px;
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      flex: 1;
+      transition: $transition;
+      &:hover {
+        background-color: #ededed;
+      }
+    }
+  }
+}
+
+.gray {
+  color: #b2b2b2;
+}
+
+.fa-comments,
+.fa-thumbs-up {
+  margin-right: 10px;
 }
