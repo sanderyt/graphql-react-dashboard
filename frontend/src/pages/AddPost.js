@@ -3,18 +3,29 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import Box from "../components/Box";
+import MessageCard from "../components/MessageCard";
+import { useForm } from "../util/hooks";
 
 const AddPost = () => {
-  const [input, setInput] = useState({ body: "" });
+  const [addedPost, setAddedPost] = useState(false);
+  const { values, onChange, onSubmit } = useForm(createPostCallback, {
+    body: ""
+  });
 
-  const inputHandler = event => {
-    const value = event.target.value;
-    setInput({ ...input, [event.target.name]: value });
-  };
+  const [createPost, { error }] = useMutation(CREATE_POST, {
+    variables: values,
+    update(_, result) {
+      setAddedPost(true);
+    },
+    onError({ graphQLErrors }) {
+      console.log(graphQLErrors);
+    }
+  });
 
-  const submitHandler = () => {
-    console.log(input);
-  };
+  function createPostCallback() {
+    createPost();
+  }
+
   return (
     <div>
       <h1>Add new post</h1>
@@ -24,28 +35,44 @@ const AddPost = () => {
           name="body"
           placeholder="What is on your mind?"
           rows="12"
-          onChange={inputHandler}
+          onChange={onChange}
         />
-        <button className="btn btn--cta" onClick={submitHandler}>
+        <button className="btn btn--cta" onClick={onSubmit}>
           Add post
         </button>
       </Box>
+      <MessageCard
+        onOpen={addedPost} //boolean that will trigger the message card
+        onClose={() => setAddedPost(false)}
+        onSuccess={true}
+        callback={() => setAddedPost(false)}
+      >
+        <p>You succesfully added a new post!</p>
+      </MessageCard>
     </div>
   );
 };
 
 const CREATE_POST = gql`
-  mutation {
-    createPost(body: "sdsdsd") {
+  mutation createPost($body: String!) {
+    createPost(body: $body) {
       id
       body
       createdAt
       username
-      comments
-      likes
-      likes
-      likeCount
+      likes {
+        id
+        username
+        createdAt
+      }
+      comments {
+        id
+        body
+        username
+        createdAt
+      }
       commentCount
+      likeCount
     }
   }
 `;
