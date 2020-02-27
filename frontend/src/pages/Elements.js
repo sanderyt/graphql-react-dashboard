@@ -55,9 +55,6 @@ const Elements = () => {
           something to confirm. <b>Next to do for modal:</b>
         </p>
         <ul>
-          <li>Add some animation to the backdrop</li>
-          <li>Add some animation to the modal itself</li>
-          <li>Add some props, like a footer with button</li>
           <li>
             Modal should ONLY close when clicked on backdrop or close icon
           </li>

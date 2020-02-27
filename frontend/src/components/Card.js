@@ -18,7 +18,7 @@ const Card = ({ card: { body, id, commentCount, likeCount, username } }) => {
     variables: {
       postId: id
     },
-    update(_, result) {
+    update(proxy, result) {
       setPostDeleted(true);
     },
     onError({ graphQLErrors }) {

@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard";
 import AddPost from "../pages/AddPost";
 import Elements from "../pages/Elements";
 import AllPosts from "../pages/AllPosts";
+import SinglePost from "../pages/SinglePost";
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
           <Route path="/admin/posts" component={AllPosts} />
           <Route path="/admin/add" component={AddPost} />
           <Route path="/admin/elements" component={Elements} />
+          <Route exact path="/admin/post/:postId" component={SinglePost} />
         </Switch>
       </div>
     </div>
