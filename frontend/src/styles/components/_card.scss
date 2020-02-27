@@ -9,6 +9,9 @@
   flex-direction: column;
   border-radius: $border-radius;
   animation: fade 500ms forwards;
+  &__content {
+    padding: 20px;
+  }
   &__actions {
     display: flex;
     background-color: #ededed;
@@ -22,11 +25,24 @@
       cursor: pointer;
       height: 40px;
       border-bottom-left-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
       flex: 1;
       transition: $transition;
       &:hover {
         background-color: #ededed;
+      }
+      &--delete {
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-color: #ff6e6e;
+        border-bottom-right-radius: $border-radius;
+        color: white;
+        transition: $transition;
+        &:hover {
+          background-color: $error-color;
+        }
       }
     }
   }

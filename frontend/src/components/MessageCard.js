@@ -16,14 +16,7 @@ const MessageCard = ({ children, onOpen, onClose, onSuccess, callback }) => {
       <div className="message-card__close" onClick={onClose}>
         <FontAwesomeIcon icon={faTimes} />
       </div>
-      <div className="message-card__content">
-        {onSuccess ? (
-          <FontAwesomeIcon icon={faCheck} />
-        ) : (
-          <FontAwesomeIcon icon={faCheck} />
-        )}
-        {children}
-      </div>
+      <div className="message-card__content">{children}</div>
     </div>
   );
 };

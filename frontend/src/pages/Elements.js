@@ -27,18 +27,6 @@ const Elements = () => {
         This is a box element. It will highlight some important content. Just
         wrap your content in it, and you are good to go.
       </Box>
-      <Box>
-        This is a box element. It will highlight some important content. Just
-        wrap your content in it, and you are good to go.
-      </Box>
-      <Box>
-        This is a box element. It will highlight some important content. Just
-        wrap your content in it, and you are good to go.
-      </Box>
-      <Box>
-        This is a box element. It will highlight some important content. Just
-        wrap your content in it, and you are good to go.
-      </Box>
       <h2>Buttons</h2>
       <button className="btn">Primary</button>
       <button className="btn btn--cta">Call-to-action</button>

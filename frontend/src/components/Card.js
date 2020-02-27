@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faComments,
+  faThumbsUp,
+  faTrash
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+
+import { AuthContext } from "../context/auth";
+import MessageCard from "../components/MessageCard";
 
 const Card = ({ card: { body, id, commentCount, likeCount, username } }) => {
+  const { user } = useContext(AuthContext);
+  const [deletePost, { error }] = useMutation(DELETE_POST, {
+    variables: {
+      postId: id
+    },
+    update(_, result) {
+      setPostDeleted(true);
+    },
+    onError({ graphQLErrors }) {
+      console.log(graphQLErrors);
+    }
+  });
+
+  const [postDeleted, setPostDeleted] = useState(false);
+
   return (
     <div className="card">
       <div className="card__content">
         <p>{body}</p>
-        <p class="gray">by {username}</p>
+        <p class="gray">
+          by {user.username === username ? "myself" : username}
+        </p>
       </div>
       <div className="card__actions">
         <div className="card__actions__item">
@@ -19,9 +45,28 @@ const Card = ({ card: { body, id, commentCount, likeCount, username } }) => {
           <FontAwesomeIcon icon={faComments} />
           Comments ({commentCount})
         </Link>
+        {user.username === username && (
+          <div className="card__actions__item--delete" onClick={deletePost}>
+            <FontAwesomeIcon icon={faTrash} />
+          </div>
+        )}
       </div>
+      <MessageCard
+        onOpen={postDeleted} //boolean that will trigger the message card
+        onClose={() => setPostDeleted(false)}
+        onSuccess={true}
+        callback={() => setPostDeleted(false)}
+      >
+        <p>You deleted your post.</p>
+      </MessageCard>
     </div>
   );
 };
 
 export default Card;
+
+const DELETE_POST = gql`
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId)
+  }
+`;
