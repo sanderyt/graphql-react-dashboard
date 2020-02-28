@@ -5,18 +5,18 @@ import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const MessageCard = ({
   children,
-  onActivate,
+  isActivated,
   onClose,
   onSuccess,
   callback
 }) => {
   useEffect(() => {
-    if (onActivate) setTimeout(() => callback(), 5000);
-  }, [onActivate]);
+    if (isActivated) setTimeout(() => callback(), 5000);
+  }, [isActivated]);
 
   return (
     <div
-      className={onActivate ? "message-card actived" : "message-card"}
+      className={isActivated ? "message-card actived" : "message-card"}
       style={onSuccess ? { borderTop: "5px solid #00b894" } : null}
     >
       <div className="message-card__close" onClick={onClose}>

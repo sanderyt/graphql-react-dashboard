@@ -51,7 +51,7 @@ const Card = ({ card: { body, id, commentCount, likeCount, username } }) => {
         )}
       </div>
       <MessageCard
-        onActivate={postDeleted}
+        isActivated={postDeleted}
         onClose={() => setPostDeleted(false)}
         onSuccess={true}
         callback={() => setPostDeleted(false)}
