@@ -42,7 +42,7 @@ const AddPost = () => {
         </button>
       </Box>
       <MessageCard
-        onOpen={addedPost} //boolean that will trigger the message card
+        onActivate={addedPost}
         onClose={() => setAddedPost(false)}
         onSuccess={true}
         callback={() => setAddedPost(false)}

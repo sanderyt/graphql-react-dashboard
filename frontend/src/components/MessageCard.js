@@ -3,14 +3,20 @@ import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const MessageCard = ({ children, onOpen, onClose, onSuccess, callback }) => {
+const MessageCard = ({
+  children,
+  onActivate,
+  onClose,
+  onSuccess,
+  callback
+}) => {
   useEffect(() => {
-    if (onOpen) setTimeout(() => callback(), 5000);
-  }, [onOpen]);
+    if (onActivate) setTimeout(() => callback(), 5000);
+  }, [onActivate]);
 
   return (
     <div
-      className={onOpen ? "message-card actived" : "message-card"}
+      className={onActivate ? "message-card actived" : "message-card"}
       style={onSuccess ? { borderTop: "5px solid #00b894" } : null}
     >
       <div className="message-card__close" onClick={onClose}>

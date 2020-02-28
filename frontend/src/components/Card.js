@@ -14,6 +14,7 @@ import MessageCard from "../components/MessageCard";
 
 const Card = ({ card: { body, id, commentCount, likeCount, username } }) => {
   const { user } = useContext(AuthContext);
+  const [postDeleted, setPostDeleted] = useState(false);
   const [deletePost, { error }] = useMutation(DELETE_POST, {
     variables: {
       postId: id
@@ -25,8 +26,6 @@ const Card = ({ card: { body, id, commentCount, likeCount, username } }) => {
       console.log(graphQLErrors);
     }
   });
-
-  const [postDeleted, setPostDeleted] = useState(false);
 
   return (
     <div className="card">
@@ -52,7 +51,7 @@ const Card = ({ card: { body, id, commentCount, likeCount, username } }) => {
         )}
       </div>
       <MessageCard
-        onOpen={postDeleted} //boolean that will trigger the message card
+        onActivate={postDeleted}
         onClose={() => setPostDeleted(false)}
         onSuccess={true}
         callback={() => setPostDeleted(false)}
